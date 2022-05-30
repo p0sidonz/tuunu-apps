@@ -1,31 +1,75 @@
-<Page name="catalog">
-  <Navbar title="Catalog" />
-  <List>
-    {#each products as product, index (product.id)}
-      <ListItem
-        title={product.title}
-        link={`/product/${product.id}/`}
+<script>
+      // Router component will receive f7router prop with current Router instance
+      export let f7router;
+  // Router component will receive f7route prop with current route data
+  export let f7route;
+
+
+  let filters = ["action", "horror", "thriller", "comedy"];
+  let selected = ["action"];
+
+  function selectFilter(value) {
+    if (selected.includes(value)) {
+      selected = selected.filter((v) => v !== value);
+    } else {
+      selected = [...selected, value];
+    }
+  }
+  import {
+    Page,
+    Chip,
+    Block,
+    BlockTitle,
+    Link,
+    CardContent
+    ,Card
+
+  } from "framework7-svelte";
+</script>
+
+<Page>
+  <BlockTitle>Select your filters from the below:</BlockTitle>
+  <Block strong>
+    {#each filters as filter (filter)}
+      <Chip
+        onClick={(e) => selectFilter(filter)}
+        text={filter}
+        color={selected.includes(filter) ? "blue" : "green"}
       />
     {/each}
-  </List>
-  {#if products.length === 3}
-    <Block>
-      <Button fill onClick={addProduct}>Add Product</Button>
-    </Block>
-  {/if}
-</Page>
-<script>
-  import { Page, Navbar, List, ListItem, Block, Button, useStore } from 'framework7-svelte';
-  import store from '../js/store';
+  </Block>
+  <Link onClick={() => f7router.navigate('/movie/1')}>
+    <Card style="height: 180px; width: 100px; margin-right">
+      <CardContent padding={false}>
+        <div
+          class="bg-color-red"
+          style=" background-image: url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/xUuHj3CgmZQ9P2cMaqQs4J0d4Zc.jpg); no-repeat center top; background-size: 100px 180px; height: 160px;"
+        >
+        </div>
+        <div class="head-font">MOVIE TITLE THEasdsadsadasd UN FOF</div>
 
-  let products = useStore('products', (value) => (products = value));
+      </CardContent>
+    </Card>
+    </Link>
 
-  const addProduct = () => {
-    store.dispatch('addProduct', {
-      id: '4',
-      title: 'Apple iPhone 12',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
-    });
+  </Page
+>
+
+
+<style>
+  .head-font {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      height: 20px;
+      width: 100px;
+    padding-top: 4px;
+    font-size: xx-small;
+    color: rgb(255, 255, 255);
+    text-shadow: #000000;
+    justify-content: center;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
+</style>
 
-</script>

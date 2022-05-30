@@ -11,7 +11,7 @@
   "theming": {
     "customColor": false,
     "color": "#007aff",
-    "darkTheme": false,
+    "darkTheme": true,
     "iconFonts": true,
     "fillBars": false
   },
