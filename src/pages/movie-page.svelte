@@ -16,7 +16,7 @@
           <br/>
           <small style="opacity: 0.7">A little bit of comment</small>
         </CardHeader>
-        <Link onClick={() => f7router.navigate('/')} cardClose color="black" class="card-opened-fade-in" style="position: absolute; right: 15px; top: 15px" iconF7="xmark_circle_fill" />
+        <Link onClick={() => f7router.back()} cardClose color="black" class="card-opened-fade-in" style="position: absolute; right: 15px; top: 15px" iconF7="xmark_circle_fill" />
       </div>
       <div class="card-content-padding">
         <p>Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps tool to show working app prototype as soon as possible in case you need to. Framework7 is created by Vladimir Kharlampidi (iDangero.us).</p>

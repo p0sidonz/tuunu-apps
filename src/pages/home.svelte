@@ -21,13 +21,12 @@
 
     Icon,
   } from "framework7-svelte";
+  import { onMount } from 'svelte';
 
     // Router component will receive f7router prop with current Router instance
-    export let f7router;
+    export let f7router ;
   // Router component will receive f7route prop with current route data
   export let f7route;
-
-
 </script>
 
 <Page name="home">
@@ -44,18 +43,8 @@
     <NavTitle sliding>Watchmovies</NavTitle>
 
     <NavRight>
-      <Link searchbarEnable=".searchbar-demo" iconIos="f7:search" iconAurora="f7:search" iconMd="material:search"></Link>
+      <Link onClick={() => f7router.navigate('/settings/')} searchbarEnable=".searchbar-demo" iconIos="f7:search" iconAurora="f7:search" iconMd="material:search"></Link>
     </NavRight>
-    <Searchbar
-      class="searchbar-demo"
-      expandable
-      searchContainer=".search-list"
-      searchIn=".item-title"
-    />
-
-    <List class="searchbar-not-found">
-      <ListItem title="Nothing found"></ListItem>
-    </List>
   </Navbar>
 
   <BlockTitle>Trending movies</BlockTitle>
