@@ -11,7 +11,7 @@ import RequestAndLoad from '../pages/request-and-load.svelte';
 import NotFoundPage from '../pages/404.svelte';
 
 import MoviePage from '../pages/movie-page.svelte'
-
+import RequestMovie from '../pages/req-movie.svelte'
 var routes = [
 
   {
@@ -23,6 +23,10 @@ var routes = [
   {
     path: '/',
     component: HomePage,
+  },
+  {
+    path: '/request/',
+    component: RequestMovie,
   },
   {
     path: '/about/',
