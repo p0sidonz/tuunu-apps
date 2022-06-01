@@ -4,6 +4,7 @@
     Page,
     Navbar,
     NavRight,
+    NavLeft,
     Link,
     Subnavbar,
     Searchbar,
@@ -13,7 +14,18 @@
 </script>
 
 <Page>
-  <Navbar title="Searchbar">
+  <Navbar>
+
+    <NavLeft>
+      <Link
+        iconIos="f7:menu"
+        iconAurora="f7:menu"
+        iconMd="material:menu"
+        panelOpen="left"
+      />
+    </NavLeft>
+
+    
     <NavRight>
       <Link
         searchbarEnable=".searchbar-demo"
@@ -23,7 +35,7 @@
       />
     </NavRight>
     <Searchbar
-      class="searchbar-demo searchbar searchbar-expandable searchbar-enabled data-f7-slot='fixed'"
+      class="searchbar-demo searchbar data-f7-slot='fixed'"
       expandable
       searchContainer=".search-list"
       searchIn=".item-title"
@@ -33,7 +45,6 @@
     <ListItem title="Nothing found" />
   </List>
   <List class="search-list searchbar-found">
-    <ListItem title="Acura" />
     <ListItem title="Audi" />
   </List>
 </Page>

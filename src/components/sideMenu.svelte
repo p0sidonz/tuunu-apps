@@ -8,7 +8,7 @@
         f7ready,
     } from "framework7-svelte";
     import { onMount } from "svelte";
-
+    import { Share } from '@capacitor/share';
     // Router component will receive f7router prop with current Router instance
     let f7router;
 
@@ -29,19 +29,39 @@
         <ListItem
             link
             title="Home"
-            subtitle="Home subtitle"
             selected={selectedMedia === "home"}
             onClick={() => ((selectedMedia = "home"), f7router.navigate("/"))}
         >
+        <span slot="media">
+            <Icon md="material:home" aurora="f7:house_fill" ios="f7:house_fill" />
+          </span>
         </ListItem>
         <ListItem
             link
             title="Filters"
-            subtitle="Filters subtitle"
             selected={selectedMedia === "catalog"}
             onClick={() => (
                 (selectedMedia = "catalog"), f7router.navigate("/catalog/")
             )}
-        />
+        >
+        <span slot="media">
+            <Icon md="material:filter_list" aurora="f7:filter_list" ios="f7:filter_list" />
+          </span>
+        </ListItem>
+
+        <ListItem
+        link
+        title="Share"
+        onClick={async ()=> {await Share.share({
+            title: 'Watch Free Movies',
+            text: 'Really awesome movie app for Free, Watch all the latest movies!',
+            url: 'http://xyz.com/',
+            dialogTitle: 'Share with buddies', 
+          });}}
+    >
+    <span slot="media">
+        <Icon md="material:share" aurora="f7:share" ios="f7:share" />
+      </span>
+    </ListItem>
     </List>
 </Page>
