@@ -9,46 +9,18 @@
     BlockTitle,
     Row,
     Col,
-    Button,
     CardContent,
     Card,
-    SwiperSlide,
-    Swiper,
     NavRight,
-    Searchbar,
-    ListItem,
-    List,
-    Icon,
   } from "framework7-svelte";
 
   import axios from "axios";
   import { onMount } from "svelte";
 
-  let movies = [
-    // {
-    //   name: "Titanic",
-    //   photo:
-    //     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-    // },
-    // {
-    //   name: "Titanic",
-    //   photo:
-    //     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-    // },
-    // {
-    //   name: "Titanic",
-    //   photo:
-    //     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-    // },
-    // {
-    //   name: "Titanic",
-    //   photo:
-    //     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-    // },
-  ];
+  let movies = [];
 
   onMount(async () => {
-    const res = await axios.get("http://127.0.0.1:8000/movies/movies/");
+    const res = await axios.get("http://localhost:8000/movies/movies/");
     movies = res.data.results;
     next = res.data.next;
     console.log(res);
@@ -100,7 +72,7 @@
 
     <NavRight>
       <Link
-        onClick={() => f7router.navigate("/settings/")}
+        onClick={() => f7router.navigate("/search/")}
         searchbarEnable=".searchbar-demo"
         iconIos="f7:search"
         iconAurora="f7:search"
@@ -183,7 +155,7 @@
             large="20"
             xlarge="20"
           >
-            <Link onClick={() => f7router.navigate(`movie/${movie.pk}`)}>
+            <Link onClick={() => f7router.navigate(`/movie/${movie.pk}`)}>
               <Card style="height: 180px; width: 100px; margin-right">
                 <CardContent padding={false}>
                   <div
@@ -196,10 +168,9 @@
                     </div>
                   {/if}
 
-                    {#if !movie.poster_path}
+                  {#if !movie.poster_path}
                     <div class="no-title">No Poster :(</div>
-
-                    {/if}
+                  {/if}
 
                   <div class="movie-title">{movie.title}</div>
                 </CardContent>

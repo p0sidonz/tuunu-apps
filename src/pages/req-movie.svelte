@@ -19,6 +19,9 @@
         ListInput,
     } from "framework7-svelte";
     import { Contacts } from "@capacitor-community/contacts";
+s
+
+
 </script>
 
 <Page>
@@ -34,7 +37,6 @@
             placeholder="Tunnu"
             clearButton
         >
-            <i class="icon demo-list-icon" slot="media" />
         </ListInput>
     </List>
     <List>

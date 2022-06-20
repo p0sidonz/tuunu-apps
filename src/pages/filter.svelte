@@ -4,13 +4,22 @@
   // Router component will receive f7route prop with current route data
   export let f7route;
 
-  let filters = ["action", "horror", "thriller", "comedy"];
-  let selected = ["action"];
+  let filters = [];
+  let selected = [];
 
-  function selectFilter(value) {
+  async function selectFilter(value) {
     if (selected.includes(value)) {
       selected = selected.filter((v) => v !== value);
     } else {
+      let params = new URLSearchParams();
+      selected.forEach((el) => {
+        params.append("genres", el.id);
+      });
+      const res = await axios.get("http://127.0.0.1:8000/movies/movies/", {
+        params,
+      });
+      console.log(res);
+
       selected = [...selected, value];
     }
   }
@@ -30,6 +39,14 @@
   } from "framework7-svelte";
 
   import SideMenu from "../components/sideMenu.svelte";
+
+  import axios from "axios";
+  import { onMount } from "svelte";
+
+  onMount(async () => {
+    const res = await axios.get("http://localhost:8000/movies/genres/");
+    filters = res.data.results;
+  });
 </script>
 
 <Panel left cover dark>
@@ -56,8 +73,8 @@
     {#each filters as filter (filter)}
       <Chip
         onClick={(e) => selectFilter(filter)}
-        text={filter}
-        color={selected.includes(filter) ? "blue" : "green"}
+        text={filter.name}
+        color={selected.includes(filter) ? "green" : "blue"}
       />
     {/each}
   </Block>

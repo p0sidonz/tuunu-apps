@@ -45,7 +45,7 @@
             title="Filters"
             selected={selectedMedia === "catalog"}
             onClick={() => (
-                (selectedMedia = "catalog"), f7router.navigate("/catalog/")
+                (selectedMedia = "catalog"), f7router.navigate("/filter/")
             )}
         >
             <span slot="media">

@@ -9,29 +9,14 @@
     Panel,
     Views,
     View,
-    Popup,
     Page,
     Navbar,
-    Toolbar,
-    NavRight,
-    Link,
     Block,
-    BlockTitle,
-    LoginScreen,
-    LoginScreenTitle,
-    List,
-    ListItem,
-    ListInput,
-    ListButton,
-    BlockFooter,
-    Icon,
-    Searchbar,
   } from "framework7-svelte";
 
   import capacitorApp from "../js/capacitor-app";
   import routes from "../js/routes";
   import store from "../js/store";
-  import Catalog from "../pages/catalog.svelte";
 
   let selected = "home";
   let selectedMedia = "home";
